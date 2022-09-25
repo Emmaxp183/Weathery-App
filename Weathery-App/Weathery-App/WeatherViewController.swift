@@ -12,6 +12,7 @@ class WeatherViewController: UIViewController {
     let backgroudImage = UIImageView()
     let locationButton = UIButton()
     let searchButton = UIButton()
+    let searchBar = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,13 @@ extension WeatherViewController {
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.setBackgroundImage(UIImage(systemName: "magnifyingglass" ), for: .normal)
         searchButton.tintColor = .label
+        
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.font = UIFont.preferredFont(forTextStyle: .title1)
+        searchBar.placeholder = "Search"
+        searchBar.textAlignment = .right
+        searchBar.borderStyle = .roundedRect
+        searchBar.backgroundColor = .systemFill
     }
    
     func layOut(){
@@ -43,6 +51,7 @@ extension WeatherViewController {
         view.addSubview(backgroudImage)
         view.addSubview(locationButton)
         view.addSubview(searchButton)
+        view.addSubview(searchBar)
         
         NSLayoutConstraint.activate([
             backgroudImage.topAnchor.constraint(equalTo: view.topAnchor),
@@ -59,6 +68,10 @@ extension WeatherViewController {
             searchButton.trailingAnchor.constraint(equalToSystemSpacingAfter: view.trailingAnchor, multiplier: -1),
             searchButton.widthAnchor.constraint(equalToConstant: 40),
             searchButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalToSystemSpacingAfter: locationButton.trailingAnchor, multiplier: 1),
+            searchButton.leadingAnchor.constraint(equalToSystemSpacingAfter: searchBar.trailingAnchor, multiplier: 1),
         ])
         
     }
